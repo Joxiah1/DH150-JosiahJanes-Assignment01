@@ -1,0 +1,111 @@
+<html>
+<head> </head>
+<style>
+
+#searchBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#logo {
+  font-size: calc(10vw + 1em);
+  color: hsla(360, 90%, 60%, 1);
+  user-select: none;
+}
+
+#searchInput {
+  font-size: calc(0.5vw + 1em);
+  color: hsla(220, 50%, 50%, 0.9);
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 2.5em;
+  border-radius: 2em;
+  border: 1px solid hsla(220, 50%, 20%, 0.9);
+  width: 80%;
+}
+
+#searchInput:hover {
+  filter: drop-shadow(1px 1px 2px hsla(220, 20%, 70%, 0.9));
+}
+
+#searchInput:focus {
+  border: 2px solid hsla(220, 20%, 70%, 0.9);
+  outline: 2px solid hsla(220, 20%, 70%, 0.9);
+}
+
+#searchBTN:focus {
+  border: 2px solid hsla(150, 100%, 43%, 1);
+  outline: 2px solid hsla(220, 20%, 70%, 0.9);
+  background-color: hsla(150, 100%, 43%, 1);
+}
+
+#searchBTN {
+  font-size: calc(0.5vw + 1em);
+  padding: 0.5em 1em;
+  border-radius: 1.25em;
+  margin: 0.5em;
+  background-color: hsla(360, 90%, 60%, 1);
+  color: white;
+  border: 1px solid hsla(220, 0%, 70%, 0.5);
+}
+
+#searchBTN:hover {
+  filter: drop-shadow(1px 1px 2px hsla(220, 20%, 70%, 0.9));
+  cursor: pointer;
+}
+
+#background {
+  background-color: white;
+}
+
+</style>
+<body id="background" style="background-color: white;">
+
+<div id="searchBox">
+  <h1 id="logo"> Google </h1>
+  <input id="searchInput" type="search" placeholder="Search anything"> </input>
+  <button id="searchBTN"> Submit </button>
+</div>
+
+<script>
+
+ var myLogo = document.querySelector("#logo");
+ //console.log(myLogo.innerHTML);
+ //console.log(myLogo.style.color);
+
+myLogo.innerHTML = "Google";
+myLogo.style.color = "hsla(0)";
+
+var myInput = document.querySelector("#searchInput");
+// console.log(myInput.placeholder);
+// console.log(myInput.value);
+
+var myBTN = document.querySelector("#searchBTN");
+// console.log(myBTN)
+
+var myBackground = document.querySelector("#background")
+
+myBTN.addEventListener("click", changeIT);
+
+var newLogo;
+
+function changeIT() {
+  newLogo = myInput.value;
+  myInput.value = "";
+  myLogo.innerHTML = newLogo;
+
+  myLogo.style.color = "hsla(150, 100%, 43%, 1)";
+  myLogo.style.backgroundColor = "black";
+  myBTN.style.color = "black"
+  myBTN.style.backgroundColor = "hsla(150, 100%, 43%, 1)"
+  myBackground.style.backgroundColor = "black"
+  // myLogo.style.fontSize = "30em";
+}
+
+</script>
+</body>
+</html>
