@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> DH150 Web-coding for UX project: Redesign of the Marconi Automotive Museum site for better Accessibility</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Demonstration of Web coding for User experience in Digital Humanities">
+  <meta name="keywords" content="HTML, CSS, JavaScript, Accessibility, SEO">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&family=Encode+Sans+SC:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+  a {
+    color: hsla(244, 100%, 48%, 1);
+  }
+  .myButton {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+  }
+  .myButton:focus {
+    background-color: hsla(0, 0%, 35%, 1);
+    padding:0.5em;
+    filter: drop-shadow(2px 2px 3px black);
+    position:static;
+    width:auto;
+    height:auto;
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    position: static;
+  }
+  .myButton:hover {
+    background-color: hsla(131, 98%, 41%, 1);
+    color: black;
+    padding:0.5em;
+    filter: drop-shadow(2px 2px 3px black);
+    font-family: 'Encode Sans Condensed', sans-serif;
+    position: static;
+    width: auto;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 20px;
+  }
+  .myclickButton {
+    background-color: hsla(0, 0%, 35%, 1);
+    padding:0.5em;
+    filter: drop-shadow(2px 2px 3px black);
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    text-align: center;
+    appearance: auto;
+  }
+  header{
+    text-align:center;
+    padding: 2em;
+    background: hsla(0, 0%, 35%, 1);
+    color: hsla(200, 50%, 100%, 1);
+    font-size: 17px;
+    font-family: 'Encode Sans Condensed', sans-serif;
+  }
+  footer{
+    text-align:center;
+    padding: 2em;
+    background: hsla(0, 0%, 35%, 1);
+    color: hsla(200, 50%, 100%, 1);
+    font-size: 17px;
+    font-family: 'Encode Sans Condensed', sans-serif;
+  }
+  body{
+    margin: 0;
+    color: hsla(200, 50%, 100%, 1);
+    font-size: 17px;
+    font-family: 'Encode Sans Condensed', sans-serif;
+  }
+  main{
+    padding: 2em;
+    background: hsla(200, 50%, 100%, 1);
+    color: black;
+  }
+  .description {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .imgBox {
+    width: 15vw;
+    margin: 1vw;
+    inline-size: 15vw;
+    overflow-wrap: break-word;
+    padding: 1vw;
+    background-color: lightgray;
+  }
+  #met {
+    width: 15vw;
+    height: 9vh;
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/Metmuseum-Report.jpg");
+    background-size: cover;
+  }
+  #lyon {
+    width: 15vw;
+    height: 9vh;
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/Lyon-Air-Museum-Report.jpg");
+    background-size: cover;
+  }
+  #modernart {
+    width: 15vw;
+    height: 9vh;
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/Museum-of-Modern-Art-Report.jpg");
+    background-size: cover;
+  }
+  #marconi {
+    width: 15vw;
+    height: 9vh;
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/Marconi-Automotive-Museum-Report.jpg");
+    background-size: cover;
+  }
+  #atomic {
+    width: 15vw;
+    height: 9vh;
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/National-Atomic-Testing-Museum-Report.jpg");
+    background-size: cover;
+  }
+  #semanticStructure {
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/semantic-structure-image.png")
+    background-size: cover;
+  }
+  #colorContrast {
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/color-contrast-image.jpg")
+    background-size: cover;
+  }
+  #keyboardAccessibility {
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/keyboard-accessibility-image.png")
+    background-size: cover;
+  }
+  #screenReaderARIA {
+    background-image: url("https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/screen-reader-image.png")
+    background-size: cover;
+  }
+  #images {
+    display: inline-flex;
+  }
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 96vw;
+    gap: 10px;
+  }
+  .dummy {
+    grid-row: 1;
+    grid-column: 1;
+    background-color: lightgray;
+    margin: 1vw;
+    padding: 1vw;
+  }
+  .description {
+    grid-row: 1;
+    grid-column: 2;
+    padding: 1vw;
+  }
+  @media (max-width: 600px) {
+    .dummy {
+      display: none;
+    }
+    .description {
+      padding: 1vw;
+      grid-row: 1;
+      grid-column: 1/3;
+    }
+  }
+</style>
+<body>
+<header>
+  <a href="#main" rel="bookmark title="research main" class="myButton"> Skip to Content </a>
+  <h1> Web-accessibility project: Marconi Automotive Museum Site </h1>
+    <h2> DH150 2021 Summer - Project documentation by Josiah Janes</h2>
+    <hr>
+
+    <h3> About the Project </h3>
+    <p> This project is to test and improve the web-accessibility of multiple museums' websites.</p>
+</header>
+<main id="main">
+    <section id="research">
+      <h3> Research </h3>
+      <p> In this project, we will be testing and examining how to improve the
+        web-accessibility and search engine optimization of various websites.
+        Accessibility and SEO are integral parts of the functionality of a website.
+        A website with a lack of accessibility can quickly alienate its users by
+        being hard to navigate or understand. With this in mind, web developers
+        must balance the scope of their project's ambitions with the usability of
+        their website. This notion of accessibility not only concerns the average
+        user of the site, but also extends to users that may have certain disabilities
+        such as blindness, deafness, a lack of motor skills, etc. On the other hand,
+        web developers must also look to prioritize their website's search engine
+        optimization so as to ensure that their users can easily find their website
+        on popular search engines. By examining various websites' accessibility
+        and search engine optimization, we can further understand where some sites
+        excel in their web design and functionality and where others may fail. In
+        doing so, we will be able to better design our own websites with these considerations
+        in mind. To learn more about the importance of web-accessibility and search
+        engine optimization, I chose to research my five favorite museums' websites.
+        I performed a test or "audit" of these websites' web-accessibility and SEO
+        by using Google Chrome's built in developer tools. More specifically, I
+        used Google Chrome's Lighthouse auditing software to automatically generate
+        reports on these websites. Upon generating a report for a webpage, the Lighthouse
+        auditing software will return back a score or grade for that site's accessibility
+        and SEO. These scores are graded on a 1-100 scale and can be used to further
+        understand where web developers can improve a site's design for ease of
+        use as well as improving the site's search ranking on search engines. </p>
+      <div id="images">
+        <article class="imgBox"> <p id="met"> </p> <p> 1) Met Museum Learning Resources <a href="https://www.metmuseum.org/learn/learning-resources" target="_blank" title="go to Met Museum Learning Resources Site"> https://www.metmuseum.org/learn/learning-resources </a>, Accessibility (91), SEO (92)</p></article>
+        <article class="imgBox"> <p id="lyon"> </p> <p> 2) Lyon Air Museum Airplane Exhibit <a href="https://lyonairmuseum.org/exhibits/airplanes/" target="_blank" title="go to Lyon Air Museum Airplane Exhibit Site"> https://lyonairmuseum.org/exhibits/airplanes/ </a>, Accessibility (99), SEO (75)</p></article>
+        <article class="imgBox"> <p id="modernart"> </p> <p> 3) Museum of Modern Art Groups and Tours <a href="https://www.moma.org/visit/groups/" target="_blank" title="go to Musuem of Modern Art Groups and Tours Site"> https://www.moma.org/visit/groups/ </a>, Accessibility (98), SEO (82)</p></article>
+        <article class="imgBox"> <p id="marconi"> </p> <p> 4) Marconi Automotive Museum Collection <a href="https://marconimuseum.org/automotive-museum/" target="_blank" title="go to Marconi Automotive Museum Collection Site"> https://marconimuseum.org/automotive-museum/ </a>, Accessibility (78), SEO (92)</p></article>
+        <article class="imgBox"> <p id="atomic"> </p> <p> 5) National Atomic Testing Museum Permanent Exhibits <a href="https://nationalatomictestingmuseum.org/exhibits/permanent-exhibits/" target="_blank" title="go to Natoinal Atomic Testing Museum Permanent Exhibits Site"> https://nationalatomictestingmuseum.org/exhibits/permanent-exhibits/ </a>, Accessibility (78), SEO (92)</p></article>
+      </div>
+      <br>
+      <article> The average accessibility score among these five websites is 91.2, and the average SEO score is 81.6. Immediately, we can see that these websites' accessibility scores fare quite well whereas their SEO scores are compartively lower and would benefit from a more optimized design. In looking more specifically at these websites' accessibility issues, I found that image elements lacking alt attributes was an extremely common problem. From my research, this means that some of the images on these websites lacked short, descriptive, alternate text that would make the site more accessible for some users. Moving forward, I also noticed that these sites' accessibility suffered from their heading elements not being in a sequentially descending order. From what I understand, this means that these sites' headings are more difficult to navigate with screen reader software. Finally, the third most common accessibility issue that I observed was that some of the sites background and foreground colors do not have a sufficient contrast ratio. A sufficient contrast ratio is important as it can be hard for some users that have some forms of blindness to distinguish such background and foreground text. In examining these websites' SEO issues, I found that many of these sites' links lacked descriptive text and crawlability. From what I understand, search engines will rank sites more highly in search rankings if it is able to "crawl", access, and understand all of the information that is presented on a website. If websites lack these critical characteristics, they will experience lower search rankings and thus website traffic. Another common issue I found on these websites was that some of these sites lacked a meta description. In a similar vein, a meta description also helps search engines to process and understand a website based on a brief summary of the contents of the page. This summary further allows both users and automatic search ranking algorithms to determine the usefulness of a website. Admittedly, while some of these errors may have confused me at first, I am further aware of how simple some of these accessibility and SEO issues are to solve and am excited to see how this newfound knowledge will assist me in the rest of this course and beyond.
+      </article>
+    </section>
+    <section id=”project”>
+      <h3> Project Design Process </h3>
+      <p> I chose to improve upon the Marconi Automotive Museum's website. While I liked the subject and aesethetic of the website, it was lacking in a few areas. More specifically, it had some of the lowest accessibility and SEO scores of the group. To improve upon many of the site's initial issues, I added meta descriptions, bypass blocks, and revised color contrast ratios to increase some of the scores. These are only a few of the revisions I had to make to the site to finally get the accessibility and SEO scores to 100. </p>
+    	<article class="card" id="semanticStructure"> <p class="dummy" id="assign02"> Semantic Structure </p> <p class="description"> To ensure the website's proper semantic html, I adding basic semantic structure elements like doctype, html, head, style, body, and script. I also added bypass blocks that could be used for tab navigation. Finally, I added section titling and permalinks to the website to bring the basic structure all together. <br><br> <a class="myclickButton" href="https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/assignment02.html" target="_blank" title="go to assignment 2 markup of Marconi Museum Website"> Check the Outcome of Semantic Structure (Assignment 02)</a></p></article>
+
+      <article class="card" id="colorContrast"> <p class="dummy" id="assign03"> Color Contrast </p> <p class="description"> To ensure the website's proper color contrast ratio, I developed several color schemes for the website including an original theme based on the original website's color scheme, as well as a dark mode, light mode, and gray scale mode for different users' preferences. I also had to make sure that the colors used in these various themes would have to follow the 4.5:1 color contrast ratio. <br><br> <a class="myclickButton" href="https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/assignment03-01.html" target="_blank" title="go to assignment 3 markup of Marconi Museum Website"> Check the Outcome of Color contrast (Assignment 03) </a></p></article>
+
+      <article class="card" id="keyboardAccessibility"> <p class="dummy" id="assign04"> Keyboard Accessibility </p> <p class="description"> To ensure the website's proper keyboard accessibility, I used tab navigation to see if there were any issues with the tab focusing getting lost or trapped with navigation. To solve some of these issues that I encountered, I further improved my original bypass block buttons and also added 10 additional interactive links and buttons from the original website. I also had to make sure that these websites could be navigated through and interfaced with through use of only the keyboard.<br><br> <a class="myclickButton" href="https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/assignment04.html" target="_blank" title="go to assignment 4 markup of Marconi Museum Website"> Check the Outcome of Keyboard Accessibility (Assignment 04) </a></p></article>
+
+      <article class="card" id="screenReaderARIA"> <p class="dummy" id="assign05"> Screen Reader and ARIA </p> <p class="description"> To ensure the website's proper screen reader and ARIA functionality, I conducted my own audit of the site to see where the site was lacking in terms of its screen reader functionality. This audit revealed issues with keyboard functionality, skip navigation, focus indication, as well as various links and labels lacking sufficiently descriptive information. I solved these issues by adding ARIA labels to both my accessibility icons as well as my social media icons, and I slightly tweaked the wording in the contact and location information to make the information more descriptive for all users.<br><br> <a class="myclickButton" href="https://joxiah1.github.io/DH150-JosiahJanes-Assignment01/assignment05.html" target="_blank" title="go to assignment 5 markup of Marconi Museum Website"> Check the Outcome of Screen Reader and ARIA Testing (Assignment 05) </a></p></article>
+      <br>
+      <article> In reflecting on this project, I have gained a tremendous understanding of how important accessibility and search engine optimization is to a website's design and functionality.
+      While improving a website's accessibility and SEO score can dramatically improve its search engine ranking, it is also important to understand how these subtle design choices can
+      drastically improve the user experience of the few, but also the many. Making accessibility a design pillar from the very beginning makes websites easier to use for everybody.
+      The original Marconi Automotive museum had a solid foundation, but was lacking in some areas of accessibility and SEO with an initial accessibility score of 78 and an SEO score of 92.
+      In my final mockup of the website, I was able to bring both of these scores to 100 through use of adding bypass blocks, ensuring proper color contrast ratio,
+      reformatting the site's semantic structure, and adding additional meta descriptions and lang attributes. I have been extremely surprised by the immensely powerful impact
+      that these scores can have on a site's discoverability. While I know these scores are vital to a website's success in search engine discoverability, I look forward to learning more
+      about how search engines rank websites based on these factors on a more specific level. Overall, the webcoding skills that I have learned throughout the project will prove to aid
+      me in my future endeavors, and I look forward to seeing how I can improve the lives of other people by making websites more accessible and discoverable.</article>
+    </section>
+    <br>
+</main>
+<footer>
+  <a href="#main" rel="bookmark title="research main" class="myButton"> Back to Top </a>
+  <p> Josiah Janes (Contact Info: josiahjanesucla@g.ucla.edu), Copyright 2021 </p>
+</footer>
+<script> </script>
+</body>
+</html>
